@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Form</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+    <style>
+        /* Falling Snowflake Styles */
+        #snowflake-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            font-size: 12px;
+            animation: fall linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="snowflake-container"></div>
+    <main>
+        <header>
+            <h1 id="title"> Christmas Ideas For Cutie ❤️🎄 </h1>
+            <p id="description">Made by your lover Ryan :)</p>
+        </header>
+        <form id="survey-form" action="http://localhost:3000/submit" method="post">
+
+            <div class="form-group">
+                <label for="occupation">Whats Your Favorite Colors Of Clothes?</label>
+                <select name="occupation" id="dropdown">
+                    <option selected disabled value>Pick your color ❤️</option>
+                    <option value="Pink">Pink</option>
+                    <option value="White">White</option>
+                    <option value="Purple">Purple</option>
+                    <option value="Grey">Grey</option>
+                    <option value="Tan">Tan</option>
+                    <option value="Black">Black</option>
+                    <option value="Red">Red</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="rating">Whats Your Favorite Types Of Gifts?🎁</label>
+                <div class="radio-group">
+                    <input type="radio" name="rating" id="Home Made" value="Home Made">
+                    <label for="Home Made"> Home Made </label>
+                </div>
+                <div class="radio-group">
+                    <input type="radio" name="rating" id="Meaningfull" value="Meaningfull">
+                    <label for="Meaningfull"> Meaningfull </label>
+                </div>
+                <div class="radio-group">
+                    <input type="radio" name="rating" id="Expensive But Something You Rly Want" value="Expensive But Something You Rly Want">
+                    <label for="Expensive But Something You Rly Want"> Expensive But Something You Rly Want </label>
+                </div>
+                <div class="radio-group">
+                    <input type="radio" name="rating" id="Anything" value="Anything">
+                    <label for="Anything"> Anything </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="remark">Anything else I should Know? </label>
+                <textarea name="remark" id="remark" placeholder="Type here <3"></textarea>
+            </div>
+
+            <div class="form-group">
+                <button id="submit" type="submit">Submit</button>
+            </div>
+        </form>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const snowflakeContainer = document.getElementById("snowflake-container");
+
+            function createSnowflake() {
+                const snowflake = document.createElement("div");
+                snowflake.classList.add("snowflake");
+                snowflake.textContent = "❄"; // Snowflake character
+                snowflake.style.left = Math.random() * 100 + "vw"; // Random horizontal position
+                snowflake.style.animationDuration = Math.random() * 3 + 2 + "s"; // Random duration (2s to 5s)
+                snowflake.style.opacity = Math.random(); // Random opacity
+                snowflake.style.fontSize = Math.random() * 10 + 10 + "px"; // Random size (10px to 20px)
+
+                snowflakeContainer.appendChild(snowflake);
+
+                setTimeout(() => {
+                    snowflake.remove();
+                }, 5000); // Matches max animation duration
+            }
+
+            setInterval(createSnowflake, 200);
+        });
+    </script>
+</body>
+
+</html>
